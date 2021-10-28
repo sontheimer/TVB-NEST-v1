@@ -71,7 +71,7 @@ def _open_port_accept_connection(comm, root, info, logger_master, path_to_files)
     # broadcast port info, accept connection on all ranks!
     # necessary to avoid conflicts in the port file -> contains MPI-Rank infos
     port = comm.bcast(port,root)
-    logger_master.info('Transformer: Rank ' + str(comm.Get_rank()) + ' accepting connection on: ' + port)
+    print('Transformer: Rank ' + str(comm.Get_rank()) + ' accepting connection on: ' + port);sys.stdout.flush()
     intra_comm = comm.Accept(port, info, root) 
     logger_master.info('Transformer: Simulation client connected to' + str(intra_comm.Get_rank()))
     
